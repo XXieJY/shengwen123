@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>{$book['title']}</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link href="__MODULE_CSS__/font_fsk2otdio7ds4i.css" rel="stylesheet">
+      <link rel="stylesheet" href="__MODULE_CSS__/vendor.css" />
+      <link rel="stylesheet" href="__MODULE_CSS__/front.css" />
+      <script src="__MODULE_JS__/vendor.js"></script>
+      <script src="__MODULE_JS__/app.js"></script>
+      
+       <style>
+      body,html{-webkit-tap-highlight-color:transparent}body{overflow-x:hidden;background-color:#fbf9fe}.container{height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch}.container>div{background-color:#fbf9fe}.hd{padding:1.5em 0}.page_title{text-align:center;font-size:24px;color:#3cc51f;font-weight:400;margin:0 15%}.page_desc{text-align:center;color:#888;font-size:14px}.bd.spacing{padding:0 15px}.home{padding-bottom:30px}.button .page_title{color:#225fba}.button .bd{padding:0 15px}.button .button_sp_area{padding:10px 0;width:60%;margin:0 auto;text-align:justify;text-justify:distribute-all-lines;font-size:0}.button .button_sp_area:after{display:inline-block;width:100%;height:0;font-size:0;margin:0;padding:0;overflow:hidden;content:"."}.cell .page_title{color:#225fba}.cell .bd{padding-bottom:30px}.dialog .bd,.toast .bd{padding:120px 15px 0}.msg{background-color:#fff}.panel .bd{padding-bottom:20px}.article{background-color:#fff}.article .page_title{color:#de7c23}.icons{background-color:#fff;text-align:center}.icons .page_title{color:#3e24bd}.icons .bd{padding:30px 0;text-align:center}.icons .icon_sp_area{padding:10px 20px;text-align:left}.icons i{margin:0 5px 10px}.tabbar{height:100%}.search_show{display:none;margin-top:0;font-size:14px}.search_show .weui_cell_bd{padding:2px 0 2px 20px;color:#666}.icon{display:inline-block;width:28px;height:28px;vertical-align:middle}.icon_button{background:url(images/icon_nav_button.png) no-repeat;background-size:28px 28px}.icon_cell{background:url(images/icon_nav_cell.png) no-repeat;background-size:28px 28px}.icon_toast{background:url(images/icon_nav_toast.png) no-repeat;background-size:28px 28px}.icon_dialog{background:url(images/icon_nav_dialog.png) no-repeat;background-size:28px 28px}.icon_progress{background:url(images/icon_nav_progress.png) no-repeat;background-size:28px 28px}.icon_msg{background:url(images/icon_nav_msg.png) no-repeat;background-size:28px 28px}.icon_article{background:url(images/icon_nav_article.png) no-repeat;background-size:28px 28px}.icon_actionSheet{background:url(images/icon_nav_actionSheet.png) no-repeat;background-size:28px 28px}.icon_icons{background:url(images/icon_nav_icons.png) no-repeat;background-size:28px 28px}.icon_panel{background:url(images/icon_nav_panel.png) no-repeat;background-size:28px 28px}.icon_tab{background:url(images/icon_nav_tab.png) no-repeat;background-size:28px 28px}.icon_search_bar{background:url(images/icon_nav_search_bar.png) no-repeat;background-size:28px 28px}@-webkit-keyframes a{0%{-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0);opacity:0}to{-webkit-transform:translateZ(0);transform:translateZ(0);opacity:1}}@keyframes a{0%{-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0);opacity:0}to{-webkit-transform:translateZ(0);transform:translateZ(0);opacity:1}}@-webkit-keyframes b{0%{-webkit-transform:translateZ(0);transform:translateZ(0);opacity:1}to{-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0);opacity:0}}@keyframes b{0%{-webkit-transform:translateZ(0);transform:translateZ(0);opacity:1}to{-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0);opacity:0}}.enter,.leave{position:absolute;top:0;right:0;bottom:0;left:0;z-index:1}.enter{-webkit-animation:a .2s forwards;animation:a .2s forwards}.leave{-webkit-animation:b .25s forwards;animation:b .25s forwards}
+    </style>
+    
+   
+  </head>
+  <body class=" ">
+      {include file="index/header" /}
+    <div class="container" style="padding-bottom:0">
+    <div class="novel-detail">
+        <div class="bd">
+            <div class="novel-intro">
+                <div class="novel-cover">
+                    <img src="{$book['image']|get_file_path}" width="105">
+                </div>
+                <div class="novel-info">
+                    <h1 class="novel-title text-primary">{$book['title']}</h1>
+                    <div class="novel-meta">
+                        字数: {$book['zishu']}字
+                    </div>
+                </div>
+            </div>
+            <div class="novel-summary block">
+                <h6><i class="iconfont icon-introduce"></i><span>简介</span></h6>
+                <p>{$book['desc']}</p>            </div>
+
+            <div class="weui_btn_area">
+                <a class="weui_btn weui_btn_primary" href="{:url('cms/document/detail', ['id' => $chapter['0']['id']])}">开始阅读</a>
+            </div>
+
+                        <div class="novel-catalog block">
+                <div class="catalog-header">
+                    <h6><i class="iconfont icon-book"></i><span>目录</span></h6>
+                </div>
+                <div class="weui_cells">
+                {volist name="chapter" id="vo" length='5'} 
+                                            <a class="weui_cell" href="{:url('cms/document/detail', ['id' => $vo['id']])}">{$vo['title']}</a>
+                {/volist}
+                                    </div>
+                <div class="catalog-footer">
+                    <a class="btn-see-more" href="/index.php/cms/column/indexidx/bid/{$book['id']}">全部目录</a>
+                </div>
+            </div>
+
+            <div class="novel-tip block">
+                <div class="mod-tip-list">
+                    <div class="bubble">
+                        <span>打赏</span>
+                        <hr>
+                        <span class="sum_of_tip">{$book['tips']}</span>
+                    </div>
+                    <a class="btn-tip-menu" href="javascript:;">打赏</a>
+                    <div class="tip-history">
+                        <h6 class="title">打赏记录</h6>
+                        <div class="no-data">土豪，求打赏</div>
+                        <div class="rows"></div>
+                        <a class="weui_btn weui_btn_default btn-load-more" href="javascript:;">查看更多</a>
+                    </div>
+                    <script type="text/html" id="tmpl-gifts">
+  <ul class="actionsheet-tip">
+    {{#each gifts}}<li>
+      <a class="btn-gift" data-gift-id="{{id}}">
+        <img src="{{img_url}}" alt="{{title}}">
+        <span class="text"><span class="price">{{wealth}}</span>书币</span>
+      </a>
+    </li>{{/each}}
+  </ul>
+</script>
+
+<script>
+  (function (global) {
+    var gifts = [{"id":1,"title":"\u9c9c\u82b1","img_url":"\/public\/static\/cms\/img\/gift_1.jpg","wealth":100},{"id":2,"title":"\u638c\u58f0","img_url":"\/public\/static\/cms\/img\/gift_2.jpg","wealth":388},{"id":3,"title":"\u94bb\u6212","img_url":"\/public\/static\/cms\/img\/gift_3.jpg","wealth":588},{"id":4,"title":"\u6e38\u8f6e","img_url":"\/public\/static\/cms\/img\/gift_4.jpg","wealth":888}];
+
+    global.Tip = function () { };
+
+    _.extend(Tip.prototype, {
+      open: function () {
+        var me = this;
+        $.actions({
+          title: '打赏',
+          actions: [{
+            className: 'bg-white',
+            text: HandlebarTemplates.get('tmpl-gifts')({
+              gifts: gifts
+            })
+          }]
+        });
+
+        $('.actionsheet-tip').on('click', '.btn-gift', function () {
+          var gift = _.find(gifts, { id: parseInt($(this).data('gift-id')) });
+          // 由于当actionshhet关闭时，jquery-weui会将modal的遮罩css也一起删除，因此需要做这个hack
+          // https://github.com/lihongxun945/jquery-weui/blob/master/src/js/action.js#L50
+          setTimeout(function () {
+            me.create(gift);
+          }, 50);
+        });
+      },
+      create: function (gift) {
+        var me = this;
+        $.actions({
+          title: '确定打赏?',
+          actions: [{
+            text: '确定',
+            className: 'color-primary',
+            onClick: function () {
+              $.ajax({
+                url: '/index.php/cms/document/tips',
+                type: 'POST',
+                dataType: 'JSON',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                  gift_id: gift.id,
+                  novel_id: '{$chapter['0']['id']}'
+                })
+              })
+              .then(function (payload) {
+                $.toast('打赏成功');
+
+                $(document).trigger('inovel.tip.created', payload.data);
+              })
+              .fail(function (error) {
+                // 余额不足
+                if (error.responseJSON.code === 9999) {
+                  me.recharge(gift);
+                } else {
+                  $.toast(error.responseJSON.message, 'forbidden');
+                }
+              });   
+            }
+          }]
+        });
+      },
+      recharge: function (gift) {
+        $.modal({
+          title: "余额不足",
+          text: " 是否前往充值?",
+          buttons: [{ 
+            text: "立即充值",
+            onClick: function () {
+              window.onpageshow = function (e) {
+                if (e.persisted) {
+                  location.reload();
+                }
+              };
+
+              location.assign('/index.php/cms/pay/index/');
+            }
+          }, { 
+            text: "取消",
+            className: "default"
+          }]
+        });
+      }
+    });
+  })(window);
+</script>
+                    <script type="text/html" id="tmpl-tip-history">
+                        <div class="row">
+                          <div><img class="avatar" src="{{ headimgurl }}" alt="{{ nickname }}"></div>
+                          <div class="detail">
+                            <p class="nickname">{{ nickname }}</p>
+                            <div class="gift">赠送: <img src="{{ gift_img_url }}" alt="{{ gift_name }}"> × 1 个礼物给作者</div>
+                            <div class="datetime">{{timestamp created_at 'YYYY-MM-DD HH:mm'}}</div>
+                          </div>
+                        </div>
+                    </script>
+                    <script>
+                        $(function () {
+                          var pageSize = 5;
+
+                          function TipHistory() {
+                            _.extend(this, {
+                              page: 0,
+                              loading: false,
+                              completed: false,
+                              items: []
+                            });
+                          }
+
+                          _.extend(TipHistory.prototype, {
+                            init: function () {
+                              this.loadMore();
+
+                              $('.btn-load-more').on('click', function () {
+                                tiphistory.loadMore();
+                              });
+                            },
+                            loadMore: function () {
+                              var me = this;
+                              var data = {
+                                page: ++me.page
+                              };
+
+                              me.loading = true;
+                              return $.ajax({
+                                url: '/index.php/cms/column/tips/id/{$book['id']}?&' + $.param(data),
+                                type: 'GET',
+                                dataType: 'JSON',
+                                contentType: 'application/json'
+                              })
+                              .then(function (payload) {
+                                me.completed = _.isEmpty(payload.data) ||  payload.data.length < pageSize;
+                                me.render(payload.data);
+                              })
+                              .always(function () {
+                                me.loading = false;
+                              });
+                            },
+                            render: function (data, prepend) {
+                              this.items = _.union(this.items, data);
+
+                              if (this.completed) {
+                                $('.btn-load-more').hide();
+                              }
+
+                              $('.tip-history .rows')[this.items.length ? 'show' : 'hide']();
+                              $('.tip-history .no-data')[this.items.length ? 'hide' : 'show']();
+
+                              var fn = HandlebarTemplates.get('tmpl-tip-history');
+                              var html = _.map(data, function (it) {
+                                it.nickname = it.nickname || '匿名';
+                                it.headimgurl = it.headimgurl || '';
+                                return fn(it);
+                              });
+                              $('.tip-history .rows')[prepend ? 'prepend' : 'append'](html);
+                            }
+                          });
+
+                          $(document).on('inovel.tip.created', function (event, data) {
+                            
+                            tiphistory.render([data], true);
+                          });
+
+                        
+
+                          var tiphistory = new TipHistory();                          
+                          var tip = new Tip();
+                          var hash = qs2hash(location.search);
+                          if (hash['tip']) {
+                            tip.open();
+                          }
+
+                          $('.btn-tip-menu').on('click', _.bind(tip.open, tip));
+
+                          tiphistory.init();
+                        });
+                      </script> 
+                </div>
+            </div>
+                    </div>
+    </div>
+</div>
+<div style="display:none">
+
+        {$Think.config.cms_config.meta_foot}
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,132 @@
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{$articles.title}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="__MODULE_CSS__/common.css" />
+    <script src="__MODULE_JS__/jquery-1.9.1.min.js"></script>
+    <script src="__MODULE_JS__/cookies.js"></script>
+    <style>
+        body {
+            max-width: 680px;
+            margin: 0px auto 20px;
+            font-family: -apple-system-font,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+        }
+        img {
+            max-width: 100%;
+        }
+         .a-title {
+             margin-bottom: 10px;
+             line-height: 1.4;
+             font-weight: 400;
+             font-size: 24px;
+         }
+        .a-time {
+            color: #8C8C8C;
+            font-size: 16px;
+        }
+        .a-footer {
+            color: #607fa6;
+            text-decoration: none;
+            line-height: 32px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="essay" class="essay" style="padding: 0 10px;">
+    <h2 class="a-title">{$articles.title}</h2>
+    <div class="a-time">2017-07-31&nbsp; 阅读 {$articles.click}</div>
+    <div class="essay-content">
+        {$articles.content}
+    </div>
+    <div><a class="a-footer" href="{$url}" target="_blank">阅读全文</a> &nbsp;阅读 {$articles.click}
+    </div>
+</div>
+
+
+
+{$js}
+<script>
+    // 微信配置
+        var url = location.href.split('#')[0];
+
+       
+   
+        wx.ready(function () {
+            // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+            // 分享到朋友圈
+            wx.onMenuShareTimeline({
+                title: "{$articles.title}", // 分享标题
+                link: url, // 分享链接
+                desc: '{$articles.description}',
+                imgUrl: '{$rooturl}{$articles.pic|get_thumb}', // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                    shareSuccess && shareSuccess();
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+            // 分享给朋友
+            wx.onMenuShareAppMessage({
+                title: "{$articles.title}", // 分享标题
+                desc: '{$articles.description}', // 分享描述
+                link: url, // 分享链接
+                imgUrl: '{$rooturl}{$articles.pic|get_thumb}', // 分享图标
+                type: '', // 分享类型,music、video或link，不填默认为link
+                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                    shareSuccess && shareSuccess();
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+            //分享到QQ
+            wx.onMenuShareQQ({
+                title: "{$articles.title}", // 分享标题
+                desc: '{$articles.description}', // 分享描述
+                link: url, // 分享链接
+                imgUrl: '{$rooturl}{$articles.pic|get_thumb}', // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                    //shareSuccess && shareSuccess();
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+            //分享到微博
+            wx.onMenuShareWeibo({
+                title: '{$articles.title}', // 分享标题
+                desc: '{$articles.description}', // 分享描述
+                link: url, // 分享链接
+                imgUrl: '{$rooturl}{$articles.pic|get_thumb}', // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                    //shareSuccess && shareSuccess();
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+            
+        });
+        wx.error(function () {
+            // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+        });
+    function shareSuccess(){
+        
+    }
+
+
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<html lang="zh-CN" class="pixel-ratio-2 retina android android-6 android-6-0"><head>
+
+    <title>{$book}</title>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+   <link rel="stylesheet" href="__MODULE_CSS__/vendor.css?20171101">
+
+    <link rel="stylesheet" href="__MODULE_CSS__/front.css?20171101">
+
+    <script src="__MODULE_JS__/vendor.js?20171101"></script>
+    <script src="__MODULE_JS__/app.js?20171101"></script>
+
+    <link href="__MODULE_CSS__/font_apds0v8n2bhp8pvi.css?20171101" rel="stylesheet">
+
+<style>
+      body,html{-webkit-tap-highlight-color:transparent}body{overflow-x:hidden;background-color:#fbf9fe}.container{height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch}.container>div{background-color:#fbf9fe}.hd{padding:1.5em 0}.page_title{text-align:center;font-size:24px;color:#3cc51f;font-weight:400;margin:0 15%}.page_desc{text-align:center;color:#888;font-size:14px}.bd.spacing{padding:0 15px}.home{padding-bottom:30px}.button .page_title{color:#225fba}.button .bd{padding:0 15px}.button .button_sp_area{padding:10px 0;width:60%;margin:0 auto;text-align:justify;text-justify:distribute-all-lines;font-size:0}.button .button_sp_area:after{display:inline-block;width:100%;height:0;font-size:0;margin:0;padding:0;overflow:hidden;content:"."}.cell .page_title{color:#225fba}.cell .bd{padding-bottom:30px}.dialog .bd,.toast .bd{padding:120px 15px 0}.msg{background-color:#fff}.panel .bd{padding-bottom:20px}.article{background-color:#fff}.article .page_title{color:#de7c23}.icons{background-color:#fff;text-align:center}.icons .page_title{color:#3e24bd}.icons .bd{padding:30px 0;text-align:center}.icons .icon_sp_area{padding:10px 20px;text-align:left}.icons i{margin:0 5px 10px}.tabbar{height:100%}.search_show{display:none;margin-top:0;font-size:14px}.search_show .weui_cell_bd{padding:2px 0 2px 20px;color:#666}.icon{display:inline-block;width:28px;height:28px;vertical-align:middle}.icon_button{background:url(images/icon_nav_button.png) no-repeat;background-size:28px 28px}.icon_cell{background:url(images/icon_nav_cell.png) no-repeat;background-size:28px 28px}.icon_toast{background:url(images/icon_nav_toast.png) no-repeat;background-size:28px 28px}.icon_dialog{background:url(images/icon_nav_dialog.png) no-repeat;background-size:28px 28px}.icon_progress{background:url(images/icon_nav_progress.png) no-repeat;background-size:28px 28px}.icon_msg{background:url(images/icon_nav_msg.png) no-repeat;background-size:28px 28px}.icon_article{background:url(images/icon_nav_article.png) no-repeat;background-size:28px 28px}.icon_actionSheet{background:url(images/icon_nav_actionSheet.png) no-repeat;background-size:28px 28px}.icon_icons{background:url(images/icon_nav_icons.png) no-repeat;background-size:28px 28px}.icon_panel{background:url(images/icon_nav_panel.png) no-repeat;background-size:28px 28px}.icon_tab{background:url(images/icon_nav_tab.png) no-repeat;background-size:28px 28px}.icon_search_bar{background:url(images/icon_nav_search_bar.png) no-repeat;background-size:28px 28px}@-webkit-keyframes a{0%{-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0);opacity:0}to{-webkit-transform:translateZ(0);transform:translateZ(0);opacity:1}}@keyframes a{0%{-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0);opacity:0}to{-webkit-transform:translateZ(0);transform:translateZ(0);opacity:1}}@-webkit-keyframes b{0%{-webkit-transform:translateZ(0);transform:translateZ(0);opacity:1}to{-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0);opacity:0}}@keyframes b{0%{-webkit-transform:translateZ(0);transform:translateZ(0);opacity:1}to{-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0);opacity:0}}.enter,.leave{position:absolute;top:0;right:0;bottom:0;left:0;z-index:1}.enter{-webkit-animation:a .2s forwards;animation:a .2s forwards}.leave{-webkit-animation:b .25s forwards;animation:b .25s forwards}
+    </style>
+    <script type="text/html" id="tmpl-thumb-novel-list">
+      <div class="thumb-novel-list">
+        {{#each novels}}
+        <div class="novel-item">
+          <div class="novel-image">
+            <a href="/index.php/cms/column/book/id/{{id}}"><img src="{{avatar}}"/></a>
+            {{#if is_time_limited_free}}
+              <i class="iconfont icon-time-limited-free"></i>
+            {{/if}}
+          </div>
+          <div class="novel-name">
+            <a href="/index.php/cms/column/book/id/{{id}}">{{truncate title 6}}</a>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </script>
+
+  </head>
+
+  <body class=" has-footer-nav">
+
+               {include file="index/header" /}
+
+
+
+{$Request.get.id}
+
+     <div class="page-bookstore">
+
+
+  <div class="block block-recommend-list" style="margin-top:0">
+    <div class="block-body">
+      <div class="novel-list recommends">
+      </div>
+    </div>
+
+    <p class="no-data">查无数据，换个条件试试看吧</p>
+  </div>
+
+  <div class="block block-novel-list" style="margin-top:0">
+    <div class="block-body">
+      <div class="novel-list novels">
+      </div>
+    </div>
+
+    <p class="no-data">查无数据，换个条件试试看吧</p>
+  </div>
+
+  <div class="weui-infinite-scroll">
+    <div class="infinite-preloader"></div>
+  </div>
+</div>
+
+
+<script type="text/html" id="tmpl-bookstore-novel-item">
+  <div class="novel-item">
+    <div class="novel-image">
+      <a href="/index.php/cms/column/book/id/{{id}}">
+        <img src="{{avatar}}">
+      </a>
+      {{#if is_time_limited_free}}
+      <i class="iconfont icon-time-limited-free"></i>
+      {{/if}}
+    </div>
+    <div class="novel-info">
+      <a href="/index.php/cms/column/book/id/{{id}}" class="novel-title">{{title}}</a>
+      {{#if is_time_limited_free}}
+      <div class="novel-meta free-period">
+        <i class="iconfont icon-clock"></i>
+        <span>限时免费: {{free_start}} ~ {{free_end}}</span>
+      </div>
+      {{/if}}
+      <div class="novel-summary">
+        <a href="/index.php/cms/column/book/id/{{id}}">{{truncate summary 50}}</a>
+      </div>
+    </div>
+  </div>
+</script>
+        <script>
+  function Bookstore () {}
+
+  _.extend(Bookstore.prototype, {
+    init: function () {
+      var self = this;
+      _.extend(self, {
+        loading: false,
+        params: {
+          status: '',
+          gender: 'male',
+          category: ''
+        },
+        pagination: {
+          cursor: 0,
+          total: 0,
+          limit: 20
+        },
+        dom: {
+          body: $('body'),
+          page: $('.page-bookstore'),
+          nodata: $('.page-bookstore').find('.no-data'),
+          novels: $('.page-bookstore').find('.novels'),
+          recommends: $('.page-bookstore').find('.recommends'),
+          blockrecommend: $('.page-bookstore').find('.block-recommend-list'),
+          infinitescroll: $('.page-bookstore').find('.weui-infinite-scroll')
+        }
+      });
+
+      self.dom.page
+        .find('a.gender:first').addClass('active').end()
+        .find('a.status:first').addClass('active').end()
+        .find('a.category').first().addClass('active').end()
+        .hide().filter('[data-gender=none], [data-gender="male"]').show();;
+      
+      self.dom.page
+      .on('click', 'a.category', function (event) {
+        self.dom.page.find('a.category').removeClass('active');
+        self.params.category = $(event.target).addClass('active').data('category');
+
+        self.fetchData();
+      })
+      .on('click', 'a.gender', function () {
+        self.dom.page.find('a.gender').removeClass('active');
+        self.params.gender = $(event.target).addClass('active').data('gender');
+
+        self.dom.page
+          .find('a.category').hide().removeClass('active')
+          .filter('[data-gender=none], [data-gender='+ self.params.gender +']').show();
+        self.params.category = self.dom.page.find('a.category:first').addClass('active').data('category');
+
+        self.fetchData();
+      })
+      .on('click', 'a.status', function () {
+        self.dom.page.find('a.status').removeClass('active');
+        self.params.status = $(event.target).addClass('active').data('status');
+
+        self.fetchData();
+      });
+
+      self.dom.body.infinite(50).on('infinite', function () {
+        self.scroll();
+      });
+    },
+    scroll: function () {
+      if (!this.loading && !this.isCompleted()) {
+        this.loadMore().then(_.bind(this.renderNovels, this));
+      }
+    },
+    reset: function () {
+      _.extend(this, {
+        pagination: {
+          cursor: 0,
+          total: 0,
+          limit: 20
+        }
+      });
+    },
+    fetchData: function () {
+      this.reset();
+
+      var self = this;
+      var promises = [this.loadMore()];
+      if (this.params.status === '' && this.params.category === '') {
+        promises.push(this.loadRecommends());
+      }
+
+      $.when.apply($, promises).then(function (novels, recommends) {
+        self.renderNovels(novels);
+        self.renderRecommands(recommends || []);
+      });
+    },
+    loadRecommends: function () {
+      return $.get('/index.php/cms/column/doajaxi/id/' + this.params.gender)
+        .then(function (payload) {
+          return payload;
+        });
+    },
+    loadMore: function () {
+      var self = this;
+      this.loading = true;
+
+      return $.get('/index.php/cms/column/doajaxfree', {
+        start: self.pagination.cursor,
+        limit: self.pagination.limit,
+        status: self.params.status,
+        gender: self.params.gender,
+        category: self.params.category
+      })
+      .always(function () {
+        self.loading = false;
+      })
+      .then(function (payload) {
+        return payload;
+      });
+    },
+    renderNovels: function (payload) {
+      this.dom.nodata[payload.data.length === 0 ? 'show' : 'hide']();
+
+      var html = _.map(payload.data, function (novel) {
+        if (novel.is_time_limited_free) {
+          _.extend(novel, {
+            free_start: moment(novel.free_time_start * 1000).format('M月D日'),
+            free_end: moment(novel.free_time_end * 1000).format('M月D日')
+          });
+        }
+
+        return HandlebarTemplates.get('tmpl-bookstore-novel-item')(novel);
+      });
+      
+      this.dom.novels[this.pagination.cursor === 0 ? 'html' : 'append'](html.join(''));
+      this.pagination.cursor += payload.data.length;
+      this.pagination.total = payload.total;
+
+      this.dom.infinitescroll[this.isCompleted() ? 'hide' : 'show']();
+    },
+    renderRecommands: function (payload) {
+      var html = _.chain(payload.data).map(function (novel) {
+        return HandlebarTemplates.get('tmpl-bookstore-novel-item')(novel);
+      }).value();
+
+      this.dom.blockrecommend[payload.data && payload.data.length ? 'show' : 'hide']();
+      this.dom.recommends.html(html.join(''));
+    },
+    isCompleted: function () {
+      return this.pagination.total <= this.pagination.cursor;
+    }
+  });
+
+  $(function () {
+    'use strict';
+
+    var bookstore = new Bookstore();
+    bookstore.init();
+    bookstore.fetchData();
+  });
+</script>
+
+
+
+
+
+
+         {include file="index/footer" /}
+
+    
+
+    <div style="display:none">
+
+    {$Think.config.cms_config.meta_foot}
+
+    </div>
+
+
+
+
+
+</body></html>

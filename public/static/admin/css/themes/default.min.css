@@ -1,0 +1,10 @@
+.editable-click, a.editable-click, a.editable-click:hover{border-bottom: dashed 1px #5c90d2;}
+
+.editable-input{ max-width:480px;}
+.editable-checklist div{ float:left; width:33%;overflow:hidden;}
+
+@media all and (max-width: 680px){
+	.popover-content{ width:100%;}
+	.editable-input{ display:block; width:100%}
+	.editable-buttons{ clear:both; display:block; width:70px; margin:0 auto; padding-top:10px;}
+	}
